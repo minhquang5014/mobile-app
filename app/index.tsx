@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Dimensions, View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import './global.css';
 const {width, height} = Dimensions.get('window');
 import { useRouter, Slot, Stack } from "expo-router";
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from '../api/firebase_key'
+
 const slides = {
     title:'Welcome to App!',
     message: 'The simplest and safest way to access your favourite app.',
@@ -11,7 +14,15 @@ const slides = {
 
 
 export default function Layout() {
+    useEffect(() => {
+            const unsub = onAuthStateChanged(auth, (user) => {
+                if (user) router.replace("/(tabs)");
+            });
+    
+            return unsub;
+            }, []);
     const router = useRouter();
+    
     return (
         <View style={styles.container}>
         <Image
@@ -24,7 +35,7 @@ export default function Layout() {
             <Text style={[styles.slideText, { marginTop: 16 }]}>{slides.message}</Text>
             <TouchableOpacity 
                 style={styles.button}
-                onPress={() => router.replace('./(tabs)/')}
+                onPress={() => router.push('./login')}
             >
                 <Text style={styles.buttonText}>{slides.action}</Text>
             </TouchableOpacity>

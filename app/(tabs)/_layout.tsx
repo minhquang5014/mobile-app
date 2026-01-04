@@ -9,8 +9,8 @@ const TabsLayout = ({ focused, icon, text}: any) => {
         return (
             <ImageBackground 
                 source={images.highlight} 
-                style={{flexDirection: 'row', flex:1, marginTop: 14, minWidth:120, minHeight:50, paddingHorizontal:16, justifyContent:'center', alignItems:'center', borderRadius:9999, overflow:'hidden'}}
-                // className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
+                // style={{flexDirection: 'row', flex:1, marginTop: 14, minWidth:120, minHeight:50, paddingHorizontal:16, justifyContent:'center', alignItems:'center', borderRadius:9999, overflow:'hidden'}}
+                className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center px-4 items-center rounded-full overflow-hidden"
             >
                 <Image source={icon} tintColor="#151312" 
                 style = {{width: 20, height: 20}}
@@ -67,15 +67,30 @@ export default function Layout() {
                 }}
             />
             <Tabs.Screen
-                name="search"
-                options={{ title: 'Search',
+                name="photo"
+                options={{ title: 'Photo',
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
                         <>
                             <TabsLayout
                                 focused={focused}
-                                icon={icons.search}
-                                text="Search"
+                                icon={icons.photo}
+                                text="Photo"
+                            />
+                        </>
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="calendar"
+                options={{ title: 'Calendar',
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => (
+                        <>
+                            <TabsLayout
+                                focused={focused}
+                                icon={icons.calendar}
+                                text="Calendar"
                             />
                         </>
                     ),

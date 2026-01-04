@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const search = () => {
+const photo = () => {
   return (
     <View>
-      <Text>search</Text>
+      <Text>[photo]</Text>
     </View>
   )
 }
 
-export default search
+export default photo
